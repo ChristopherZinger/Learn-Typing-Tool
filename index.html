@@ -3,21 +3,33 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap" rel="stylesheet">
+
     <title>Blind Type</title>
   </head>
   <body id="body">
 
     <div id="wrapper">
-      <div id="game-wrapper">
-        <div id="mistakesCounter">mistakes</div>
-        <div id="correctCounter" class="counter">correct</div>
-        <div id="currentLevel" class="counter">Current level</div>
-        <div id="keyset" class="counter">keyset</div>
+      <h2 id="currentLevel" class="center counter">0</h2>
+      <div id="level-text" class="center">level</div>
+      <div class="mistakes center">
+        <div id="m1" class="mistake-point"></div>
+        <div id="m2" class="mistake-point"></div>
+        <div id="m3" class="mistake-point"></div>
+        <div id="m4" class="mistake-point"></div>
+        <div id="m5" class="mistake-point"></div>
+      </div>
+      <div id="game-wrapper" class="center">
         <div id="next-letter" class="counter"> </div>
       </div>
-
+      <div id="keyboard" class="center">
+        <div id="row-0"></div>
+        <div id="row-1" style="margin-left:25px;"></div>
+        <div id="row-2" style="margin-left:50px;"></div>
+        <div id="row-3" style="margin-left:25px;"></div>
+      </div>
     </div>
-
     <script type="text/javascript" src="blindType.js">
 
     </script>

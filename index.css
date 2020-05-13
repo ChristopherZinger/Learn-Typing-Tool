@@ -1,7 +1,16 @@
 *{
   margin: 0px;
   padding: 0px;
+  font-family: 'Baloo Da 2', cursive;
 }
+
+.center{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
 
 #body{
   position: relative;
@@ -13,32 +22,67 @@
   position: relative;
   left: 50%;
   top: 50%;
-  height: 50%;
-  width: 50%;
-  border: 1px solid black;
-  border-radius: 20px;
+  height: 85%;
+  width: 80%;
   transform: translate(-50%,-50%);
+}
+
+#level-text{
+  top: -30px;
+}
+#currentLevel{
+  font-size: 60px;
+}
+
+.mistakes{
+  /* background-color: black; */
+  width: 400px;
+  height: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mistake-point{
+  height: 12px;
+  width: 12px;
+  background-color: lightgray;
+  border-radius: 10px;
 }
 
 #game-wrapper{
   position: relative;
-  width: 100%;
-  height: 100%;
+  margin-top: 50px;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+  border: 5px solid lightgray
+}
 
+#keyboard{
+  top: 50px;
+  transform: translateX(-51%);
 }
 
 #next-letter{
   position: relative;
   left: 50%;
-  top: 50%;
+  top: 54%;
   transform: translate(-50%,-50%);
   text-align: center;
   font-size: 100px;
 }
 
-.counter{
-  margin: 10px;
+.key{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: lightgray;
+  margin: 2px;
 }
+
 
 .transparent{
   opacity: 0;
