@@ -1,7 +1,23 @@
+:root{
+  --lightgray: #F2F2F2;
+  --darkgray: #808080;
+  --blue: #1ECCF4;
+}
+
 *{
   margin: 0px;
   padding: 0px;
   font-family: 'Baloo Da 2', cursive;
+  cursor: context-menu;
+  user-select: none;
+  color: var(--darkgray);
+}
+
+body{
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .center{
@@ -9,29 +25,6 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-}
-
-
-#body{
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-
-#wrapper{
-  position: relative;
-  left: 50%;
-  top: 50%;
-  height: 85%;
-  width: 80%;
-  transform: translate(-50%,-50%);
-}
-
-#level-text{
-  top: -30px;
-}
-#currentLevel{
-  font-size: 60px;
 }
 
 .mistakes{
@@ -45,33 +38,15 @@
 .mistake-point{
   height: 12px;
   width: 12px;
-  background-color: lightgray;
+  background-color: var(--lightgray);
   border-radius: 10px;
 }
 
-#game-wrapper{
+.key p{
   position: relative;
-  margin-top: 50px;
-  width: 300px;
-  height: 300px;
-  border-radius: 200px;
-  border: 5px solid lightgray
+  top: 2px;
+  color: var(--darkgray);
 }
-
-#keyboard{
-  top: 50px;
-  transform: translateX(-51%);
-}
-
-#next-letter{
-  position: relative;
-  left: 50%;
-  top: 54%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  font-size: 100px;
-}
-
 .key{
   position: relative;
   display: inline-block;
@@ -79,15 +54,142 @@
   width: 30px;
   height: 30px;
   border-radius: 50px;
-  background-color: lightgray;
+  background-color: var(--lightgray);
   margin: 2px;
 }
 
+.clock{
+  position:absolute;
+  transform: translateX(-50%);
+}
 
 .transparent{
   opacity: 0;
 }
 
 .red{
+  text-shadow: 0 0 7px rgba(230,0,0,.5);
   color: red;
+}
+
+.blinkKey{
+  animation: blinkKey .5s ;
+}
+
+@keyframes blinkKey {
+  0%   { background: #F2F2F2;}
+  15%  { background: #1ECCF4;;}
+  100% { background: #F2F2F2;}
+}
+
+#links{
+  position: absolute;
+  bottom: 10px;
+}
+
+#links a{
+  text-decoration: none;
+  margin: 0px 20px;
+  font-size: 15px;
+  color: lightgray;
+  cursor: pointer;
+  transition-duration: .5s;
+}
+
+#links a:hover{
+  color: var(--blue);
+}
+
+#clock-progress{
+  height:360px;
+  width:360px;
+  top:-5px;
+}
+
+#clock-time{
+  height:350px;
+  width:350px;
+}
+
+#body{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#wrapper{
+  position: relative;
+  left: 50%;
+  top: 50%;
+  height: 85%;
+  width: 600px;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border-radius: 20px;
+
+}
+
+#level-text{
+  top: -30px;
+}
+#currentLevel{
+  font-size: 60px;
+}
+
+#points-counter{
+  position: absolute;
+  left: 100px;
+  font-size: 50px;
+  color: var(--darkgray);
+}
+
+#start-game{
+  z-index: 10;
+  top: 25px;
+  position: absolute;
+  right: 100px;
+  font-size: 25px;
+  color: var(--darkgray);
+  transition-duration: .5s;
+  cursor: pointer;
+}
+
+
+#game-wrapper{
+  z-index: 5;
+  position: relative;
+  margin: 50px 0px;
+  width: 600px;
+  height: 300px;
+
+}
+
+#keyboard{
+  width: 500px;
+  top: 50px;
+  transform: translateX(-51%);
+}
+
+#next-letter, #start{
+  position: absolute;
+  left: 50%;
+  width: 500px;
+  top: 190px;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-size: 100px;
+
+}
+
+#start p{
+  font-size: 17px;
+}
+
+#start, #start-game,#start h4{
+  transition-duration: .5s;
+}
+
+#start h4:hover, #start-game:hover {
+  color: var(--blue);
+  letter-spacing: 3px;
 }

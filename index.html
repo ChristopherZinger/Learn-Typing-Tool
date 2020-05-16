@@ -10,28 +10,56 @@
   </head>
   <body id="body">
 
+    <!-- main wrapper -->
     <div id="wrapper">
       <h2 id="currentLevel" class="center counter">0</h2>
       <div id="level-text" class="center">level</div>
-      <div class="mistakes center">
-        <div id="m1" class="mistake-point"></div>
-        <div id="m2" class="mistake-point"></div>
-        <div id="m3" class="mistake-point"></div>
-        <div id="m4" class="mistake-point"></div>
-        <div id="m5" class="mistake-point"></div>
+      <div id="mistakes" class="mistakes center">
+        <div class="mistake-point"></div>
+        <div class="mistake-point"></div>
+        <div class="mistake-point"></div>
+        <div class="mistake-point"></div>
+        <div class="mistake-point"></div>
       </div>
+
+      <!-- game wrapper -->
       <div id="game-wrapper" class="center">
-        <div id="next-letter" class="counter"> </div>
+        <div id="points-counter"></div>
+
+        <div id="start-game"></div>
+        <div id="clock-wrapper">
+        </div>
+        <div id="letter-wrapper">
+          <div id="start" class="counter">
+            <h4>Start!</h4>
+            <p>
+              Hi, welcome to 'Blind Type'. <br/>
+              A simple game for you to practice your typing skills <br/>
+              Just click start and start punching keys displayed in the circle.
+              Keep your index fingers on ' F ' and ' J ' <br/>
+              Every time you level up new letter is unlocked.
+            </p>
+          </div>
+        </div>
       </div>
+
+      <!-- KEYBOARD -->
       <div id="keyboard" class="center">
         <div id="row-0"></div>
         <div id="row-1" style="margin-left:25px;"></div>
         <div id="row-2" style="margin-left:50px;"></div>
         <div id="row-3" style="margin-left:25px;"></div>
       </div>
-    </div>
-    <script type="text/javascript" src="blindType.js">
 
+      <!-- LINKS -->
+      <div id="links" class="center">
+          <a href="#">git</a>
+          <a href="#">author</a>
+      </div>
+    </div>
+
+    <!-- MAIN SCRIPT -->
+    <script type="text/javascript" src="blindType.js">
     </script>
 
   </body>
