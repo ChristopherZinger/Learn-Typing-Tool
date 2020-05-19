@@ -59,18 +59,7 @@ body{
   margin: 2px;
 }
 
-.blinkWrongA{
-  opacity: 0;
-  color: red;
 
-}
-
-.blinkWrongB{
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 1.5s;
-  transition-timing-function: ease-out;
-}
 
 .blinkKeyA{
   background-color: var(--blue);
