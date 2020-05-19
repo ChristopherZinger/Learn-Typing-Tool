@@ -139,7 +139,7 @@
           />
         </svg>
   `
-  }
+  };
 
   function timer (){
     stopInterval();
@@ -149,8 +149,6 @@
       getRandChar();
       wrongAnswer(null);
       renderStats();
-
-
     }, timePerQuestion)
   }
 

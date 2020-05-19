@@ -47,6 +47,7 @@ body{
   top: 2px;
   color: var(--darkgray);
 }
+
 .key{
   position: relative;
   display: inline-block;
@@ -58,13 +59,33 @@ body{
   margin: 2px;
 }
 
+.blinkWrongA{
+  opacity: 0;
+  color: red;
+
+}
+
+.blinkWrongB{
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.blinkKeyA{
+  background-color: var(--blue);
+}
+
+.blinkKeyB{
+  background-color: var(--lightgray);
+  transition-property: background-color;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
 .clock{
   position:absolute;
   transform: translateX(-50%);
-}
-
-.transparent{
-  opacity: 0;
 }
 
 .red{
@@ -72,14 +93,15 @@ body{
   color: red;
 }
 
-.blinkKey{
-  animation: blinkKey .5s ;
+.charBlinkA{
+  opacity: 0;
 }
 
-@keyframes blinkKey {
-  0%   { background: #F2F2F2;}
-  15%  { background: #1ECCF4;;}
-  100% { background: #F2F2F2;}
+.charBlinkB{
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .8s;
+  transition-timing-function: ;
 }
 
 #links{
