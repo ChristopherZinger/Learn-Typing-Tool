@@ -74,6 +74,7 @@
         // you won
         controller.stopGame();
       }
+      uiMgr.changeBg();
     }
 
     const newQuestion = ()=>{
@@ -173,7 +174,7 @@
 
   // UI Manager
   const uiMgr = (()=>{
-    let keys, interval, timerState;
+    let keys, interval, timerState, prevBgNr;
     const timeInterval = 20; // how often clock is rerendered
     const clockInterval = 100 / (gameMgr.getSettings().timePerQuestion / timeInterval) // fro
 
@@ -331,7 +332,30 @@
           tag.style.color = null;
           tag.style.textShadow = null;
           tag.innerHTML = gameMgr.getCurrChar();
-        },200)
+        },200);
+      },
+
+      changeBg: ()=>{
+        const body = document.querySelector('#bg-img');
+        nr = Math.round(Math.random() * 7) + 1
+        while(prevBgNr === nr){
+          nr = Math.round(Math.random() * 7) + 1
+        };
+        prevBgNr = nr;
+        let opacity = .5
+        let interval = setInterval(()=>{
+          opacity = opacity - .08;
+          body.style.opacity = opacity;
+          if (opacity < 0) {
+            clearInterval(interval);
+            body.src = `media/bg${prevBgNr}.jpg`;
+            interval = setInterval( ()=> {
+              opacity = opacity + .08;
+              body.style.opacity = opacity;
+              if(opacity>0.5){clearInterval(interval)}
+            }, 50);
+          }
+        },50);
       },
 
       renderKeyboardCharSet : renderKeyboardCharSet,

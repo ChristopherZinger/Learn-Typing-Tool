@@ -13,12 +13,22 @@
   color: var(--darkgray);
 }
 
-body{
-  background-image: url('bg.jpg');
+#bg-img{
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  filter: grayscale(100%);
+  opacity: .5;
+}
+
+/* #body{
+  background-image: url('media/bg3.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-}
+  background-size: cover;
+  filter: grayscale(100%);
+} */
 
 .center{
   position: relative;
@@ -137,6 +147,7 @@ body{
   transform: translate(-50%,-50%);
   background-color: white;
   border-radius: 20px;
+  border: 1px solid lightgray;
 
 }
 
