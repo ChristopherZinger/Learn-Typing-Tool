@@ -26,7 +26,7 @@
     };
 
     const settings = {
-      timePerQuestion:5000,
+      timePerQuestion:4000,
       nextLevelthreshold:10,
       maxMistakes:5,
     }
@@ -62,7 +62,6 @@
     }
 
     const levelUp = ()=>{
-
       // regenerate one mistake point
       state.mistakesLeft< settings.maxMistakes ?  state.mistakesLeft++ : '';
       if (state.level < Object.keys(level_content).length){
@@ -74,7 +73,8 @@
         // you won
         controller.stopGame();
       }
-      uiMgr.changeBg();
+      if (state.level%3 === 0){ uiMgr.changeBg(); }
+
     }
 
     const newQuestion = ()=>{
@@ -207,7 +207,7 @@
       document.getElementById("clock-wrapper").innerHTML = `
             <!-- TIME CLOCK -->
           <svg viewBox="0 0 36 36" id="clock-time" class="clock">
-            <path style="  stroke: #F2F2F2";
+            <path style=" stroke: #dadada";
         fill: none;
         stroke-width: .5;
         stroke-linecap: round;
@@ -343,23 +343,24 @@
         };
         prevBgNr = nr;
         let opacity = .5
+        const speed = .1;
+        const maxOpacity = .7;
         let interval = setInterval(()=>{
-          opacity = opacity - .08;
+          opacity = opacity - speed;
           body.style.opacity = opacity;
           if (opacity < 0) {
             clearInterval(interval);
             body.src = `media/bg${prevBgNr}.jpg`;
             interval = setInterval( ()=> {
-              opacity = opacity + .08;
+              opacity = opacity + speed;
               body.style.opacity = opacity;
-              if(opacity>0.5){clearInterval(interval)}
+              if(opacity>maxOpacity){clearInterval(interval)}
             }, 50);
           }
         },50);
       },
 
       renderKeyboardCharSet : renderKeyboardCharSet,
-
       renderChar: ()=>{
         let char = gameMgr.getCurrChar();
         document.getElementById('next-letter').innerHTML = `${char}`
@@ -432,7 +433,6 @@
       },
 
       init : ()=>{
-        console.log('app init.');
         setEventListeners();
       }
     }

@@ -17,18 +17,9 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
-  filter: grayscale(100%);
-  opacity: .5;
+  filter: grayscale(70%);
+  opacity: .75;
 }
-
-/* #body{
-  background-image: url('media/bg3.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  filter: grayscale(100%);
-} */
 
 .center{
   position: relative;
