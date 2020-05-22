@@ -19,6 +19,7 @@
   width: 100vw;
   filter: grayscale(70%);
   opacity: .75;
+  object-fit: cover;
 }
 
 .center{
@@ -29,7 +30,6 @@
 }
 
 .mistakes{
-  /* background-color: black; */
   width: 400px;
   height: 25px;
   display: flex;
@@ -127,20 +127,25 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
+
 
 #wrapper{
   position: relative;
   left: 50%;
   top: 50%;
   height: 85%;
-  width: 600px;
+  width: 40%;
   transform: translate(-50%,-50%);
   background-color: white;
   border-radius: 20px;
   border: 1px solid lightgray;
-
 }
+
+
+
+
 
 #level-text{
   top: -30px;
@@ -174,7 +179,6 @@
   margin: 50px 0px;
   width: 600px;
   height: 300px;
-
 }
 
 #keyboard{
@@ -191,7 +195,6 @@
   transform: translate(-50%,-50%);
   text-align: center;
   font-size: 100px;
-
 }
 
 #start p{
@@ -205,4 +208,74 @@
 #start h4:hover, #start-game:hover {
   color: var(--blue);
   letter-spacing: 3px;
+}
+
+@media  (max-width: 1375px), (max-height: 930px){
+  #wrapper{
+    height: 590px;
+    width: 450px;
+  }
+
+  #currentLevel{
+    margin: 10px 0;
+    font-size: 40px;
+  }
+
+  .mistakes{
+    width: 270px;
+    height: 25px;
+  }
+
+  #game-wrapper{
+    margin: 20px 0 0 0;
+    height: 260px;
+  }
+  #clock-progress{
+    height:260px;
+    width:260px;
+    top:-5px;
+  }
+
+  #clock-time{
+    height:250px;
+    width:250px;
+  }
+
+  #next-letter, #start{
+    top: 135px;
+    font-size: 75px;
+    width: 400px;
+  }
+
+  #start p{
+    font-size: 13px;
+  }
+  #points-counter{
+    left: 160px;
+    font-size: 40px;
+  }
+
+  #start-game{
+    right: 160px;
+    top:10px;
+    font-size: 20px;
+  }
+
+  #keyboard{
+    width: 360px;
+    top: 0px;
+  }
+
+  .key p{
+    font-size: 11px;
+    top: 1px;
+
+  }
+
+  .key{
+    width: 20px;
+    height: 20px;
+  }
+
+
 }

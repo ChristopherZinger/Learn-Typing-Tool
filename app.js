@@ -26,7 +26,7 @@
     };
 
     const settings = {
-      timePerQuestion:4000,
+      timePerQuestion:2000,
       nextLevelthreshold:10,
       maxMistakes:5,
     }
@@ -73,8 +73,6 @@
         // you won
         controller.stopGame();
       }
-      if (state.level%3 === 0){ uiMgr.changeBg(); }
-
     }
 
     const newQuestion = ()=>{
@@ -336,7 +334,7 @@
       },
 
       changeBg: ()=>{
-        const body = document.querySelector('#bg-img');
+        const img = document.querySelector('#bg-img');
         nr = Math.round(Math.random() * 7) + 1
         while(prevBgNr === nr){
           nr = Math.round(Math.random() * 7) + 1
@@ -345,19 +343,46 @@
         let opacity = .5
         const speed = .1;
         const maxOpacity = .7;
-        let interval = setInterval(()=>{
-          opacity = opacity - speed;
-          body.style.opacity = opacity;
-          if (opacity < 0) {
-            clearInterval(interval);
-            body.src = `media/bg${prevBgNr}.jpg`;
-            interval = setInterval( ()=> {
-              opacity = opacity + speed;
-              body.style.opacity = opacity;
-              if(opacity>maxOpacity){clearInterval(interval)}
-            }, 50);
-          }
-        },50);
+        const downloadingImage = new Image();
+        downloadingImage.onload = function(){
+            let interval = setInterval(()=>{
+              opacity = opacity - speed;
+              img.style.opacity = opacity;
+              if (opacity < 0) {
+                clearInterval(interval);
+                img.src = this.src;
+                interval = setInterval( ()=> {
+                  opacity = opacity + speed;
+                  img.style.opacity = opacity;
+                  if(opacity>maxOpacity){clearInterval(interval)}
+                }, 50);
+              }
+            },50);
+        };
+        downloadingImage.src = `media/bg${prevBgNr}.jpg`;
+
+      },
+
+      displayWindowSize: ()=>{
+          // Get width and height of the window excluding scrollbars
+          var w = document.documentElement.clientWidth;
+          var h = document.documentElement.clientHeight;
+          const wrapper = document.getElementById('wrapper');
+            if(w<650 || h<615 ){
+              // stop gameand hide all
+              console.log('too smalls');
+              wrapper.style.display = 'none';
+              document.querySelector('body').innerHTML = `
+              <div class='center' style='top: 50%; transform: translate(-50%, -50%); padding: 30px; background-color:white; border-radius: 50px;'>
+                <h1> sorry ...</h1>
+                <p style='padding: 0 20px;'> You need device with bigger display to use this page.</p>
+                <p style='padding: 0 20px; font-size: 12px;'> Please, maximize your browser window and refresh the page.</p>
+              </div>
+              `;
+            }else{
+              wrapper.style.display = null;
+            }
+
       },
 
       renderKeyboardCharSet : renderKeyboardCharSet,
@@ -382,6 +407,8 @@
           gameMgr.getState().points + `<span style='font-size:10px'>pt</span>`;
         // retry button
         document.getElementById('start-game').innerHTML = 'retry'
+        // update bg
+        uiMgr.changeBg();
         // render elements
         renderKeyboard();
         renderKeyboardCharSet();
@@ -401,7 +428,9 @@
   const controller  = (()=>{
     const setEventListeners = ()=>{
       // listen to start click
-      document.getElementById('start').addEventListener('click', startGame)
+      document.getElementById('start').addEventListener('click', startGame);
+      // Attaching the event listener function to window's resize event
+      window.addEventListener("resize", uiMgr.displayWindowSize);
     }
 
     const startGame = ()=>{
@@ -433,6 +462,8 @@
       },
 
       init : ()=>{
+        // Calling the function for the first time
+        uiMgr.displayWindowSize();
         setEventListeners();
       }
     }
